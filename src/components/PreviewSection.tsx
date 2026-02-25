@@ -7,6 +7,8 @@ interface PreviewSectionProps {
   id?: string;
   image: string;
   imageAlt: string;
+  sectionTitle?: string;
+  sectionTitleHighlight?: string;
   heading: string;
   description: string;
   buttonLabel: string;
@@ -20,6 +22,8 @@ const PreviewSection = ({
   id,
   image,
   imageAlt,
+  sectionTitle,
+  sectionTitleHighlight,
   heading,
   description,
   buttonLabel,
@@ -45,9 +49,14 @@ const PreviewSection = ({
 
           {/* Content */}
           <ScrollReveal delay={200} className={reversed ? 'lg:order-1' : ''}>
-            <h2 className="font-display text-3xl lg:text-4xl font-bold text-navy mb-6 leading-tight">
+            {sectionTitle && (
+              <h2 className="font-display text-sm font-semibold tracking-widest uppercase text-gold mb-2">
+                {sectionTitle}{sectionTitleHighlight && <span className="text-navy"> {sectionTitleHighlight}</span>}
+              </h2>
+            )}
+            <h3 className="font-display text-3xl lg:text-4xl font-bold text-navy mb-6 leading-tight">
               {heading}
-            </h2>
+            </h3>
             <p className="text-muted-foreground leading-relaxed mb-6">
               {description}
             </p>

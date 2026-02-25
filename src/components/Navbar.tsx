@@ -76,7 +76,7 @@ const Navbar = () => {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled ? 'glassmorphism shadow-sm' : 'bg-transparent'
+        scrolled || !isHomePage ? 'glassmorphism shadow-sm' : 'bg-transparent'
       }`}
     >
       <nav className="container mx-auto flex items-center justify-between px-6 py-4">
@@ -93,7 +93,7 @@ const Navbar = () => {
               <Link
                 to={link.href}
                 className={`text-sm font-medium transition-colors duration-300 hover:text-gold ${
-                  currentActive === link.href ? 'text-gold' : 'text-navy'
+                  currentActive === link.href ? 'text-gold font-semibold' : 'text-navy'
                 }`}
               >
                 {link.label}
