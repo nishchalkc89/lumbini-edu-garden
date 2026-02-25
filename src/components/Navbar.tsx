@@ -125,7 +125,7 @@ const Navbar = () => {
               <X size={24} />
             </button>
           </div>
-          <ul className="flex flex-col items-center justify-center flex-1 gap-6">
+          <ul className="flex flex-col items-start px-8 pt-6 gap-6">
             {navLinks.map((link) => (
               <li key={link.href}>
                 <Link
