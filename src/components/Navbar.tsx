@@ -25,14 +25,13 @@ const homeSections = [
 ];
 
 const Navbar = () => {
-  const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('/');
   const location = useLocation();
   const isHomePage = location.pathname === '/';
 
   const handleScroll = useCallback(() => {
-    setScrolled(window.scrollY > 50);
+    
 
     if (!isHomePage) return;
 
@@ -75,9 +74,7 @@ const Navbar = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled || !isHomePage ? 'glassmorphism shadow-sm' : 'bg-transparent'
-      }`}
+      className="fixed top-0 left-0 right-0 z-50 glassmorphism shadow-sm transition-all duration-500"
     >
       <nav className="container mx-auto flex items-center justify-between px-6 py-4">
         <Link to="/" className="flex items-center gap-2">
