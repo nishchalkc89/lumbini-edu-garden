@@ -107,6 +107,8 @@ const Index = () => {
         id="about"
         image={aboutImg}
         imageAlt="Students engaged in activity-based learning"
+        sectionTitle="About"
+        sectionTitleHighlight="Us"
         heading="Nurturing Tomorrow's Leaders Today"
         description="At Lumbini Smart School, we believe education goes beyond textbooks. Our task-based learning approach engages students in real-world problem solving, fostering critical thinking, creativity, and collaboration from the earliest grades."
         buttonLabel="More About Us"
@@ -123,6 +125,7 @@ const Index = () => {
               </div>
             </ScrollReveal>
             <ScrollReveal delay={200}>
+              <p className="text-sm font-semibold tracking-widest uppercase text-gold mb-2">Our <span className="text-navy">Academics</span></p>
               <h2 className="font-display text-3xl lg:text-4xl font-bold text-navy mb-6">Academic Excellence Through Innovation</h2>
               <p className="text-muted-foreground leading-relaxed mb-8">
                 Our curriculum blends traditional academic rigor with modern pedagogical methods, ensuring every student receives a world-class education tailored to their learning style.
@@ -156,6 +159,7 @@ const Index = () => {
               </div>
             </ScrollReveal>
             <ScrollReveal delay={200} className="lg:order-1">
+              <p className="text-sm font-semibold tracking-widest uppercase text-gold mb-2">Our <span className="text-navy">Facilities</span></p>
               <h2 className="font-display text-3xl lg:text-4xl font-bold text-navy mb-6">World-Class Facilities</h2>
               <p className="text-muted-foreground leading-relaxed mb-8">
                 From smart classrooms to specialized labs, our infrastructure is designed to inspire exploration and support every dimension of student growth.
@@ -184,6 +188,8 @@ const Index = () => {
         id="sports"
         image={sportsImg}
         imageAlt="Students playing sports"
+        sectionTitle="Sports &"
+        sectionTitleHighlight="Wellness"
         heading="Sports, Wellness & Physical Growth"
         description="We champion holistic physical development through a structured sports and wellness program that includes futsal, yoga, meditation, and a comprehensive nutrition policy — shaping healthy, resilient individuals."
         buttonLabel="Discover Sports"
@@ -210,6 +216,7 @@ const Index = () => {
         <div className="container mx-auto px-6">
           <ScrollReveal>
             <div className="text-center mb-14">
+              <p className="text-sm font-semibold tracking-widest uppercase text-gold mb-2">Life <span className="text-navy">Skills</span></p>
               <h2 className="font-display text-3xl lg:text-4xl font-bold text-navy mb-4">Life Skills & Community</h2>
               <p className="text-muted-foreground max-w-2xl mx-auto">
                 Developing well-rounded individuals through leadership programs, community engagement, and creative expression.
@@ -250,6 +257,7 @@ const Index = () => {
         <div className="container mx-auto px-6">
           <ScrollReveal>
             <div className="text-center mb-14">
+              <p className="text-sm font-semibold tracking-widest uppercase text-gold mb-2">Campus <span className="text-navy">Gallery</span></p>
               <h2 className="font-display text-3xl lg:text-4xl font-bold text-navy mb-4">Campus Gallery</h2>
               <p className="text-muted-foreground max-w-xl mx-auto">A glimpse into life at Lumbini Smart School.</p>
             </div>
