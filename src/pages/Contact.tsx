@@ -14,7 +14,7 @@ const Contact = () => {
 
   return (
     <div>
-      <PageHeader title="Contact Us" subtitle="We'd love to hear from you" />
+      <PageHeader title="Contact" titleHighlight="Us" subtitle="We'd love to hear from you" />
 
       <section className="py-20">
         <div className="container mx-auto px-6">

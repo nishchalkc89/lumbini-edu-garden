@@ -13,7 +13,7 @@ const values = [
 const About = () => {
   return (
     <div>
-      <PageHeader title="About Us" subtitle="Discover the story, vision, and values behind Lumbini Smart School" />
+      <PageHeader title="About" titleHighlight="Us" subtitle="Discover the story, vision, and values behind Lumbini Smart School" backgroundImage={aboutImg} />
 
       <section className="py-20">
         <div className="container mx-auto px-6">

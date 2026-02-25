@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 
@@ -13,27 +13,70 @@ const navLinks = [
   { label: 'Contact', href: '/contact' },
 ];
 
+// Section IDs on the homepage mapped to nav routes
+const homeSections = [
+  { id: 'hero', href: '/' },
+  { id: 'about', href: '/about' },
+  { id: 'academics', href: '/academics' },
+  { id: 'facilities', href: '/facilities' },
+  { id: 'sports', href: '/sports' },
+  { id: 'life-skills', href: '/life-skills' },
+  { id: 'gallery', href: '/gallery' },
+];
+
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('/');
   const location = useLocation();
+  const isHomePage = location.pathname === '/';
+
+  const handleScroll = useCallback(() => {
+    setScrolled(window.scrollY > 50);
+
+    if (!isHomePage) return;
+
+    // Find which section is currently in view
+    let currentSection = '/';
+    for (const section of homeSections) {
+      const el = document.getElementById(section.id);
+      if (el) {
+        const rect = el.getBoundingClientRect();
+        if (rect.top <= 150) {
+          currentSection = section.href;
+        }
+      }
+    }
+    setActiveSection(currentSection);
+  }, [isHomePage]);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener('scroll', onScroll);
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [handleScroll]);
 
   useEffect(() => {
     setMobileOpen(false);
   }, [location]);
 
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [mobileOpen]);
+
+  const getActiveHref = () => {
+    if (isHomePage) return activeSection;
+    return location.pathname;
+  };
+
+  const currentActive = getActiveHref();
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? 'glassmorphism shadow-sm'
-          : 'bg-transparent'
+        scrolled ? 'glassmorphism shadow-sm' : 'bg-transparent'
       }`}
     >
       <nav className="container mx-auto flex items-center justify-between px-6 py-4">
@@ -50,11 +93,7 @@ const Navbar = () => {
               <Link
                 to={link.href}
                 className={`text-sm font-medium transition-colors duration-300 hover:text-gold ${
-                  location.pathname === link.href
-                    ? 'text-gold'
-                    : scrolled
-                    ? 'text-navy'
-                    : 'text-navy'
+                  currentActive === link.href ? 'text-gold' : 'text-navy'
                 }`}
               >
                 {link.label}
@@ -79,7 +118,7 @@ const Navbar = () => {
           mobileOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
-        <div className="absolute inset-0 bg-background/95 backdrop-blur-lg" />
+        <div className="absolute inset-0 bg-white" />
         <div className="relative flex flex-col h-full">
           <div className="flex justify-between items-center px-6 py-4">
             <span className="font-display text-xl font-bold text-navy">
@@ -95,7 +134,7 @@ const Navbar = () => {
                 <Link
                   to={link.href}
                   className={`text-lg font-medium transition-colors ${
-                    location.pathname === link.href ? 'text-gold' : 'text-navy'
+                    currentActive === link.href ? 'text-gold' : 'text-navy'
                   }`}
                 >
                   {link.label}

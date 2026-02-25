@@ -15,7 +15,7 @@ const features = [
 const Academics = () => {
   return (
     <div>
-      <PageHeader title="Academics" subtitle="Excellence through innovative, task-based pedagogy" />
+      <PageHeader title="Our" titleHighlight="Academics" subtitle="Excellence through innovative, task-based pedagogy" backgroundImage={academicsImg} />
 
       <section className="py-20">
         <div className="container mx-auto px-6">

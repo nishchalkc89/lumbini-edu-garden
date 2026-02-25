@@ -16,7 +16,7 @@ const programs = [
 const LifeSkills = () => {
   return (
     <div>
-      <PageHeader title="Life Skills & Community" subtitle="Developing well-rounded individuals for a better world" />
+      <PageHeader title="Life Skills &" titleHighlight="Community" subtitle="Developing well-rounded individuals for a better world" backgroundImage={lifeSkills1} />
 
       <section className="py-20">
         <div className="container mx-auto px-6">
