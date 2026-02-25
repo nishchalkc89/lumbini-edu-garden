@@ -60,7 +60,7 @@ const Index = () => {
   return (
     <div>
       {/* ===== HERO ===== */}
-      <section className="relative min-h-screen flex items-center overflow-hidden">
+      <section id="hero" className="relative min-h-screen flex items-center overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0">
           <img src={heroImg} alt="Lumbini Smart School campus" className="w-full h-full object-cover" />
@@ -114,7 +114,7 @@ const Index = () => {
       />
 
       {/* ===== ACADEMICS PREVIEW ===== */}
-      <section className="py-20 lg:py-28 bg-cream">
+      <section id="academics" className="py-20 lg:py-28 bg-cream">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <ScrollReveal>
@@ -147,7 +147,7 @@ const Index = () => {
       </section>
 
       {/* ===== FACILITIES PREVIEW ===== */}
-      <section className="py-20 lg:py-28">
+      <section id="facilities" className="py-20 lg:py-28">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <ScrollReveal className="lg:order-2">
@@ -206,7 +206,7 @@ const Index = () => {
       </PreviewSection>
 
       {/* ===== LIFE SKILLS PREVIEW ===== */}
-      <section className="py-20 lg:py-28">
+      <section id="life-skills" className="py-20 lg:py-28">
         <div className="container mx-auto px-6">
           <ScrollReveal>
             <div className="text-center mb-14">
@@ -246,7 +246,7 @@ const Index = () => {
       </section>
 
       {/* ===== GALLERY PREVIEW ===== */}
-      <section className="py-20 lg:py-28 bg-cream">
+      <section id="gallery" className="py-20 lg:py-28 bg-cream">
         <div className="container mx-auto px-6">
           <ScrollReveal>
             <div className="text-center mb-14">

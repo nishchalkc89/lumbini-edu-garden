@@ -17,7 +17,7 @@ const facilities = [
 const Facilities = () => {
   return (
     <div>
-      <PageHeader title="Our Facilities" subtitle="World-class infrastructure designed to inspire learning" />
+      <PageHeader title="Our" titleHighlight="Facilities" subtitle="World-class infrastructure designed to inspire learning" backgroundImage={facilitiesImg} />
 
       <section className="py-20">
         <div className="container mx-auto px-6">

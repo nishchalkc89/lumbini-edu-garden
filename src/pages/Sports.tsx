@@ -16,7 +16,7 @@ const sportsFeatures = [
 const Sports = () => {
   return (
     <div>
-      <PageHeader title="Sports & Wellness" subtitle="Building healthy bodies and resilient minds" />
+      <PageHeader title="Sports &" titleHighlight="Wellness" subtitle="Building healthy bodies and resilient minds" backgroundImage={sportsImg} />
 
       <section className="py-20">
         <div className="container mx-auto px-6">

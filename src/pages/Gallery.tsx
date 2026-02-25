@@ -41,7 +41,7 @@ const Gallery = () => {
 
   return (
     <div>
-      <PageHeader title="Gallery" subtitle="Explore life at Lumbini Smart School through our lens" />
+      <PageHeader title="Our" titleHighlight="Gallery" subtitle="Explore life at Lumbini Smart School through our lens" backgroundImage={artsImg} />
 
       <section className="py-20">
         <div className="container mx-auto px-6">
