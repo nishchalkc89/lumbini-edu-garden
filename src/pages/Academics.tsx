@@ -1,7 +1,6 @@
 import PageHeader from '@/components/PageHeader';
 import ScrollReveal from '@/components/ScrollReveal';
 import { BookOpen, Monitor, Brain, Users, GraduationCap, Lightbulb } from 'lucide-react';
-import academicsImg from '@/assets/academics.jpg';
 
 const features = [
   { icon: BookOpen, title: 'Activity-Based Learning', desc: 'Students learn by doing — through experiments, projects, and real-world problem-solving that makes knowledge stick.' },
@@ -15,18 +14,34 @@ const features = [
 const Academics = () => {
   return (
     <div>
-      <PageHeader title="Our" titleHighlight="Academics" subtitle="Excellence through innovative, task-based pedagogy" backgroundImage={academicsImg} />
+      {/* 🔥 Background from public */}
+      <PageHeader
+        title="Our"
+        titleHighlight="Academics"
+        subtitle="Excellence through innovative, task-based pedagogy"
+        backgroundImage="/academics.jpg"
+      />
 
       <section className="py-20">
         <div className="container mx-auto px-6">
+
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
+
             <ScrollReveal>
               <div className="rounded-lg overflow-hidden shadow-lg">
-                <img src={academicsImg} alt="Smart classroom" className="w-full h-[400px] object-cover" />
+                {/* 🔥 Image from public */}
+                <img
+                  src="/academics.jpg"
+                  alt="Smart classroom"
+                  className="w-full h-[400px] object-cover"
+                />
               </div>
             </ScrollReveal>
+
             <ScrollReveal delay={200}>
-              <h2 className="font-display text-3xl font-bold text-navy mb-6">Academic Excellence</h2>
+              <h2 className="font-display text-3xl font-bold text-navy mb-6">
+                Academic Excellence
+              </h2>
               <p className="text-muted-foreground leading-relaxed mb-4">
                 At Lumbini Smart School, academic excellence isn't just about scores — it's about deep understanding, creative application, and lifelong curiosity.
               </p>
@@ -34,6 +49,7 @@ const Academics = () => {
                 Our curriculum integrates task-based learning with technology-enhanced instruction, ensuring students develop both knowledge and practical skills for the modern world.
               </p>
             </ScrollReveal>
+
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -41,12 +57,17 @@ const Academics = () => {
               <ScrollReveal key={f.title} delay={i * 80}>
                 <div className="bg-card p-8 rounded-lg shadow-sm hover-lift h-full">
                   <f.icon size={28} className="text-gold mb-4" />
-                  <h3 className="font-display text-lg font-semibold text-navy mb-3">{f.title}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{f.desc}</p>
+                  <h3 className="font-display text-lg font-semibold text-navy mb-3">
+                    {f.title}
+                  </h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    {f.desc}
+                  </p>
                 </div>
               </ScrollReveal>
             ))}
           </div>
+
         </div>
       </section>
     </div>

@@ -1,44 +1,67 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 
 interface TypingTextProps {
   strings: string[];
   className?: string;
+  typingSpeed?: number;
+  deletingSpeed?: number;
+  pauseTime?: number;
 }
 
-const TypingText = ({ strings, className = '' }: TypingTextProps) => {
-  const [currentStringIndex, setCurrentStringIndex] = useState(0);
-  const [currentText, setCurrentText] = useState('');
+const TypingText = ({
+  strings,
+  className = '',
+  typingSpeed = 70,
+  deletingSpeed = 40,
+  pauseTime = 2000,
+}: TypingTextProps) => {
+  const [index, setIndex] = useState(0);
+  const [text, setText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
-
-  const tick = useCallback(() => {
-    const fullText = strings[currentStringIndex];
-
-    if (!isDeleting) {
-      setCurrentText(fullText.substring(0, currentText.length + 1));
-      if (currentText === fullText) {
-        setTimeout(() => setIsDeleting(true), 2000);
-        return;
-      }
-    } else {
-      setCurrentText(fullText.substring(0, currentText.length - 1));
-      if (currentText === '') {
-        setIsDeleting(false);
-        setCurrentStringIndex((prev) => (prev + 1) % strings.length);
-        return;
-      }
-    }
-  }, [currentText, isDeleting, currentStringIndex, strings]);
+  const [isPaused, setIsPaused] = useState(false);
 
   useEffect(() => {
-    const speed = isDeleting ? 30 : 60;
-    const timer = setTimeout(tick, speed);
+    if (!strings.length) return;
+
+    const currentFullText = strings[index];
+
+    if (isPaused) return;
+
+    const handleTyping = () => {
+      if (!isDeleting) {
+        // Typing forward
+        const nextText = currentFullText.substring(0, text.length + 1);
+        setText(nextText);
+
+        if (nextText === currentFullText) {
+          setIsPaused(true);
+          setTimeout(() => {
+            setIsDeleting(true);
+            setIsPaused(false);
+          }, pauseTime);
+        }
+      } else {
+        // Deleting
+        const nextText = currentFullText.substring(0, text.length - 1);
+        setText(nextText);
+
+        if (nextText === '') {
+          setIsDeleting(false);
+          setIndex((prev) => (prev + 1) % strings.length);
+        }
+      }
+    };
+
+    const speed = isDeleting ? deletingSpeed : typingSpeed;
+    const timer = setTimeout(handleTyping, speed);
+
     return () => clearTimeout(timer);
-  }, [tick, isDeleting]);
+  }, [text, isDeleting, index, strings, typingSpeed, deletingSpeed, pauseTime, isPaused]);
 
   return (
     <span className={className}>
-      {currentText}
-      <span className="typing-cursor text-gold">|</span>
+      {text}
+      <span className="ml-1 text-gold animate-pulse">|</span>
     </span>
   );
 };
