@@ -4,6 +4,17 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .section-divider {
+    @apply w-full flex justify-center py-0;
+  }
+  .section-divider::after {
+    content: '';
+    @apply block w-24 h-[2px] rounded-full;
+    background-color: hsl(var(--gold));
+  }
+}
+
 @layer base {
   :root {
     --background: 210 20% 98%;
