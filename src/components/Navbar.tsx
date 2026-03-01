@@ -13,7 +13,6 @@ const navLinks = [
   { label: 'Contact', href: '/contact' },
 ];
 
-// Section IDs on the homepage mapped to nav routes
 const homeSections = [
   { id: 'hero', href: '/' },
   { id: 'about', href: '/about' },
@@ -27,15 +26,24 @@ const homeSections = [
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('/');
+  const [scrolled, setScrolled] = useState(false);
+
   const location = useLocation();
   const isHomePage = location.pathname === '/';
 
-  const handleScroll = useCallback(() => {
-    
+  // 🔥 Detect scroll for transparent → solid effect
+  useEffect(() => {
+    const handleNavbarScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
 
+    window.addEventListener('scroll', handleNavbarScroll);
+    return () => window.removeEventListener('scroll', handleNavbarScroll);
+  }, []);
+
+  const handleScroll = useCallback(() => {
     if (!isHomePage) return;
 
-    // Find which section is currently in view
     let currentSection = '/';
     for (const section of homeSections) {
       const el = document.getElementById(section.id);
@@ -59,26 +67,31 @@ const Navbar = () => {
     setMobileOpen(false);
   }, [location]);
 
-  // Prevent body scroll when mobile menu is open
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? 'hidden' : '';
     return () => { document.body.style.overflow = ''; };
   }, [mobileOpen]);
 
-  const getActiveHref = () => {
-    if (isHomePage) return activeSection;
-    return location.pathname;
-  };
-
-  const currentActive = getActiveHref();
+  const currentActive = isHomePage ? activeSection : location.pathname;
 
   return (
     <header
-      className="fixed top-0 left-0 right-0 z-50 bg-white shadow-sm transition-all duration-500"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled
+          ? 'bg-white shadow-md py-3'
+          : 'bg-transparent py-5'
+        }`}
     >
-      <nav className="container mx-auto flex items-center justify-between px-6 py-4">
-        <Link to="/" className="flex items-center gap-2">
-          <span className="font-display text-xl font-bold text-navy">
+      <nav className="container mx-auto flex items-center justify-between px-6">
+
+        {/* Logo + Name */}
+        <Link to="/" className="flex items-center gap-3">
+          <img
+            src="/logo.png"
+            alt="Lumbini Smart School Logo"
+            className="h-10 w-auto"
+          />
+          <span className={`font-display text-xl font-bold transition-colors duration-300 ${scrolled ? 'text-navy' : 'text-white'
+            }`}>
             Lumbini<span className="text-gold"> Smart School</span>
           </span>
         </Link>
@@ -89,9 +102,12 @@ const Navbar = () => {
             <li key={link.href}>
               <Link
                 to={link.href}
-                className={`text-sm font-medium transition-colors duration-300 hover:text-gold ${
-                  currentActive === link.href ? 'text-gold font-semibold' : 'text-navy'
-                }`}
+                className={`text-sm font-medium transition-colors duration-300 ${currentActive === link.href
+                    ? 'text-gold font-semibold'
+                    : scrolled
+                      ? 'text-navy hover:text-gold'
+                      : 'text-white hover:text-gold'
+                  }`}
               >
                 {link.label}
               </Link>
@@ -102,8 +118,8 @@ const Navbar = () => {
         {/* Mobile Toggle */}
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="lg:hidden text-navy p-2"
-          aria-label="Toggle menu"
+          className={`lg:hidden p-2 ${scrolled ? 'text-navy' : 'text-white'
+            }`}
         >
           {mobileOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
@@ -111,35 +127,43 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       <div
-        className={`lg:hidden fixed inset-0 top-0 z-40 transition-transform duration-300 ${
-          mobileOpen ? 'translate-x-0' : 'translate-x-full'
-        }`}
+        className={`lg:hidden fixed inset-0 z-40 bg-white transition-transform duration-300 ${mobileOpen ? 'translate-x-0' : 'translate-x-full'
+          }`}
       >
-        <div className="absolute inset-0 bg-white" />
-        <div className="relative flex flex-col h-full">
-          <div className="flex justify-between items-center px-6 py-4">
+        <div className="flex justify-between items-center px-6 py-4 border-b">
+
+          {/* Mobile Logo */}
+          <div className="flex items-center gap-3">
+            <img
+              src="/logo.png"
+              alt="Lumbini Smart School Logo"
+              className="h-10 w-auto"
+            />
             <span className="font-display text-xl font-bold text-navy">
               Lumbini<span className="text-gold"> Smart School</span>
             </span>
-            <button onClick={() => setMobileOpen(false)} className="text-navy p-2">
-              <X size={24} />
-            </button>
           </div>
-          <ul className="flex flex-col items-start px-8 pt-6 gap-6">
-            {navLinks.map((link) => (
-              <li key={link.href}>
-                <Link
-                  to={link.href}
-                  className={`text-lg font-medium transition-colors ${
-                    currentActive === link.href ? 'text-gold' : 'text-navy'
-                  }`}
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
+
+          <button onClick={() => setMobileOpen(false)} className="text-navy p-2">
+            <X size={24} />
+          </button>
         </div>
+
+        <ul className="flex flex-col items-start px-8 pt-8 gap-6">
+          {navLinks.map((link) => (
+            <li key={link.href}>
+              <Link
+                to={link.href}
+                className={`text-lg font-medium transition-colors ${currentActive === link.href
+                    ? 'text-gold'
+                    : 'text-navy'
+                  }`}
+              >
+                {link.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
       </div>
     </header>
   );
