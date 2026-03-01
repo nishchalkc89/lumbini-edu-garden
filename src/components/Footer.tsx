@@ -4,8 +4,8 @@ import { MapPin, Phone, Mail, Facebook, Instagram, Youtube } from 'lucide-react'
 const Footer = () => {
   return (
     <footer className="bg-navy text-primary-foreground">
-      <div className="container mx-auto px-6 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+      <div className="container mx-auto px-6 py-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {/* Brand */}
           <div>
             <h3 className="font-display text-2xl font-bold mb-4">
@@ -66,7 +66,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-primary-foreground/10 mt-12 pt-8 text-center text-sm opacity-60">
+        <div className="border-t border-primary-foreground/10 mt-8 pt-6 text-center text-sm opacity-60">
           © {new Date().getFullYear()} Lumbini Smart School. All rights reserved.
         </div>
       </div>
