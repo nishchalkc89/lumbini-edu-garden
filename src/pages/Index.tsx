@@ -102,6 +102,8 @@ const Index = () => {
         </div>
       </section>
 
+      <div className="section-divider" />
+
       {/* ===== ABOUT PREVIEW ===== */}
       <PreviewSection
         id="about"
@@ -114,6 +116,8 @@ const Index = () => {
         buttonLabel="More About Us"
         buttonLink="/about"
       />
+
+      <div className="section-divider" />
 
       {/* ===== PRINCIPAL'S MESSAGE ===== */}
       <section id="principal-message" className="py-20 lg:py-28 bg-cream">
@@ -150,6 +154,8 @@ const Index = () => {
         </div>
       </section>
 
+      <div className="section-divider" />
+
       {/* ===== ACADEMICS PREVIEW ===== */}
       <section id="academics" className="py-20 lg:py-28 bg-cream">
         <div className="container mx-auto px-6">
@@ -183,6 +189,8 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      <div className="section-divider" />
 
       {/* ===== FACILITIES PREVIEW ===== */}
       <section id="facilities" className="py-20 lg:py-28">
@@ -218,6 +226,8 @@ const Index = () => {
         </div>
       </section>
 
+      <div className="section-divider" />
+
       {/* ===== SPORTS PREVIEW ===== */}
       <PreviewSection
         id="sports"
@@ -245,6 +255,8 @@ const Index = () => {
           ))}
         </div>
       </PreviewSection>
+
+      <div className="section-divider" />
 
       {/* ===== LIFE SKILLS PREVIEW ===== */}
       <section id="life-skills" className="py-20 lg:py-28">
@@ -286,6 +298,8 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      <div className="section-divider" />
 
       {/* ===== GALLERY PREVIEW ===== */}
       <section id="gallery" className="py-20 lg:py-28 bg-cream">
