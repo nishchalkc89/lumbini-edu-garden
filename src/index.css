@@ -229,10 +229,11 @@ html {
 
 /* Hide scrollbar on mobile */
 @media (max-width: 768px) {
-  body {
+  html, body {
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
+  html::-webkit-scrollbar,
   body::-webkit-scrollbar {
     display: none;
   }
