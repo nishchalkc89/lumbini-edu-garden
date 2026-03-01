@@ -115,6 +115,41 @@ const Index = () => {
         buttonLink="/about"
       />
 
+      {/* ===== PRINCIPAL'S MESSAGE ===== */}
+      <section id="principal-message" className="py-20 lg:py-28 bg-cream">
+        <div className="container mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <ScrollReveal className="lg:order-2">
+              <div className="img-zoom rounded-lg overflow-hidden shadow-lg">
+                <img
+                  src="/placeholder.svg"
+                  alt="Principal of Lumbini Smart School"
+                  className="w-full h-[350px] lg:h-[450px] object-cover"
+                />
+              </div>
+            </ScrollReveal>
+            <ScrollReveal delay={200} className="lg:order-1">
+              <p className="text-sm font-semibold tracking-widest uppercase text-gold mb-2">
+                What Our <span className="text-navy">Principal Said</span>
+              </p>
+              <h2 className="font-display text-3xl lg:text-4xl font-bold text-navy mb-6 leading-tight">
+                A Message From Our Principal
+              </h2>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                "At Lumbini Smart School, we are committed to nurturing every child's unique potential. Our vision is to create an environment where curiosity thrives, creativity flourishes, and every student feels empowered to become a responsible global citizen."
+              </p>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                "We believe that true education is not just about academic excellence — it is about building character, developing life skills, and inspiring a lifelong love for learning. Our dedicated team of educators works tirelessly to ensure that each child receives personalized attention and guidance."
+              </p>
+              <p className="text-muted-foreground leading-relaxed">
+                "Together with parents and our community, we are shaping the leaders of tomorrow — one child at a time."
+              </p>
+              <p className="font-display text-navy font-semibold mt-6">— Principal, Lumbini Smart School</p>
+            </ScrollReveal>
+          </div>
+        </div>
+      </section>
+
       {/* ===== ACADEMICS PREVIEW ===== */}
       <section id="academics" className="py-20 lg:py-28 bg-cream">
         <div className="container mx-auto px-6">
