@@ -226,3 +226,14 @@
 html {
   scroll-behavior: smooth;
 }
+
+/* Hide scrollbar on mobile */
+@media (max-width: 768px) {
+  body {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  body::-webkit-scrollbar {
+    display: none;
+  }
+}
