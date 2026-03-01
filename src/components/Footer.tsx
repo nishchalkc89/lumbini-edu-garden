@@ -67,7 +67,8 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-primary-foreground/10 mt-8 pt-6 text-center text-sm opacity-60">
-          © {new Date().getFullYear()} Lumbini Smart School. All rights reserved.
+          © {new Date().getFullYear()} Lumbini Smart School. All rights reserved. Made by{' '}
+          <a href="https://www.nishchalkc.com.np/" target="_blank" rel="noopener noreferrer" className="text-gold hover:underline">Nishchal KC</a>
         </div>
       </div>
     </footer>
