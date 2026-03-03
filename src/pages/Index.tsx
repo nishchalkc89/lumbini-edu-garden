@@ -3,6 +3,8 @@ import { ArrowRight, BookOpen, Brain, Users, Lightbulb, Monitor, Wrench, BookMar
 import TypingText from '../components/TypingText';
 import PreviewSection from '../components/PreviewSection';
 import ScrollReveal from '../components/ScrollReveal';
+import TeamCard from '../components/TeamCard';
+import { teamMembers } from '../data/teamMembers';
 
 const lifeSkillCards = [
   {
@@ -447,6 +449,7 @@ const Index = () => {
 
       {/* ===== GALLERY PREVIEW ===== */}
       <section id="gallery" className="py-20 lg:py-28 ">
+        {/* ... keep existing code */}
         <div className="container mx-auto px-6">
 
           <ScrollReveal>
@@ -469,22 +472,17 @@ const Index = () => {
             {galleryImages.map((img, i) => (
               <ScrollReveal key={i} delay={i * 80}>
                 <div className="group relative rounded-lg overflow-hidden cursor-pointer aspect-[4/3]">
-
-                  {/* Image */}
                   <img
                     src={img.src}
                     alt={img.alt}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
-
-                  {/* Overlay */}
                   <div className="absolute inset-0 bg-navy/0 group-hover:bg-navy/40 transition-all duration-300 flex items-center justify-center">
                     <ArrowRight
                       size={24}
                       className="text-primary-foreground opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300"
                     />
                   </div>
-
                 </div>
               </ScrollReveal>
             ))}
@@ -496,6 +494,49 @@ const Index = () => {
               className="group inline-flex items-center gap-2 bg-navy text-primary-foreground px-6 py-3 rounded-md font-medium text-sm hover:bg-navy-dark transition-colors duration-300"
             >
               View More Photos
+              <ArrowRight size={16} className="group-hover:translate-x-1 transition" />
+            </Link>
+          </div>
+
+        </div>
+      </section>
+
+      <div className="section-divider" />
+
+      {/* ===== OUR TEAM PREVIEW ===== */}
+      <section id="team" className="py-20 lg:py-28 bg-cream">
+        <div className="container mx-auto px-6">
+
+          <ScrollReveal>
+            <div className="text-center mb-14">
+              <p className="text-sm font-semibold tracking-widest uppercase text-gold mb-2">
+                Our <span className="text-navy">Team</span>
+              </p>
+
+              <h2 className="font-display text-3xl lg:text-4xl font-bold text-navy mb-4">
+                Meet Our Educators
+              </h2>
+
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Dedicated, experienced, and passionate teachers who inspire every student to reach their fullest potential.
+              </p>
+            </div>
+          </ScrollReveal>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {teamMembers.slice(0, 4).map((member, i) => (
+              <ScrollReveal key={member.name} delay={i * 100}>
+                <TeamCard member={member} />
+              </ScrollReveal>
+            ))}
+          </div>
+
+          <div className="text-center mt-10">
+            <Link
+              to="/team"
+              className="group inline-flex items-center gap-2 bg-navy text-primary-foreground px-6 py-3 rounded-md font-medium text-sm hover:bg-navy-dark transition-colors duration-300"
+            >
+              View All Team Members
               <ArrowRight size={16} className="group-hover:translate-x-1 transition" />
             </Link>
           </div>
