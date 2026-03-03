@@ -10,6 +10,7 @@ const navLinks = [
   { label: 'Sports & Wellness', href: '/sports' },
   { label: 'Life Skills', href: '/life-skills' },
   { label: 'Gallery', href: '/gallery' },
+  { label: 'Our Team', href: '/team' },
   { label: 'Contact', href: '/contact' },
 ];
 
